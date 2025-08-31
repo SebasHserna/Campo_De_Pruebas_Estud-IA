@@ -1,56 +1,56 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TestCarriers : MonoBehaviour
 {
-    public Berserk berserkPlayer;
-    public Mage magePlayer;
+    public Mage magePrefab;
+    public Berserk berserkPrefab;
+
+    private Mage mage;
+    private Berserk berserk;
+
+    public List<Skill> allSkills; // Arrastra aquí los ScriptableObjects de las skills
 
     void Start()
     {
-        ListPlayerSkills(berserkPlayer);
-        ListPlayerSkills(magePlayer);
+        // Instanciamos personajes
+        mage = Instantiate(magePrefab);
+        berserk = Instantiate(berserkPrefab);
 
-        StartCoroutine(TestBerserkSkills());
-        StartCoroutine(TestMageSkills());
-    }
+        mage.name = "Mage";
+        berserk.name = "Berserk";
 
-    // --- Mostrar todas las skills de un jugador ---
-    private void ListPlayerSkills(PlayableCarrier player)
-    {
-        Debug.Log($"=== Skills de {player.gameObject.name} ===");
-        if (player.Skills.Count == 0)
+        // Asignamos skills
+        foreach (var skill in allSkills)
         {
-            Debug.Log("No tiene skills asignadas.");
-            return;
+            mage.AddSkill(skill);
+            berserk.AddSkill(skill);
         }
 
-        foreach (var skill in player.Skills)
-        {
-            Debug.Log($"{skill.skillName} (Tipo: {skill.type}, ManaCost: {skill.manaCost}, Cooldown: {skill.cooldown}s, Damage: {skill.damage})");
-        }
+        // Mostrar estado inicial
+        Debug.Log($"{mage.name} - Health: {mage.Health.CurrentValue}, Mana: {mage.Mana.CurrentValue}");
+        Debug.Log($"{berserk.name} - Health: {berserk.Health.CurrentValue}, Mana: {berserk.Mana.CurrentValue}");
     }
 
-    // --- Test Berserk ---
-    private IEnumerator TestBerserkSkills()
+    void Update()
     {
-        Debug.Log("=== Test Berserk ===");
-        for (int i = 0; i < 3; i++)
+        // Tecla 1: Mage usa Fireball
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            berserkPlayer.UseSkill(Skill.SkillType.BasicAttack);
-            yield return new WaitForSeconds(1f);
+            mage.UseSkill(Skill.SkillType.Fireball);
         }
-    }
 
-    // --- Test Mage ---
-    private IEnumerator TestMageSkills()
-    {
-        Debug.Log("=== Test Mage ===");
-        for (int i = 0; i < 5; i++)
+        // Tecla 2: Berserk usa Rage
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            magePlayer.UseSkill(Skill.SkillType.Fireball);
-            yield return new WaitForSeconds(1f); // prueba de cooldown
+            berserk.UseSkill(Skill.SkillType.Rage);
+        }
+
+        // Mostrar estado en consola
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log($"{mage.name} - Health: {mage.Health.CurrentValue}, Mana: {mage.Mana.CurrentValue}");
+            Debug.Log($"{berserk.name} - Health: {berserk.Health.CurrentValue}, Mana: {berserk.Mana.CurrentValue}");
         }
     }
 }

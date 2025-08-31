@@ -17,13 +17,13 @@ public class SkillDebugger : MonoBehaviour
 
     private void DebugSkills(PlayableCarrier carrier, string carrierName)
     {
-        if (carrier.Skills == null || carrier.Skills.Count == 0)
+        if (carrier.Skill == null || carrier.Skill.Count == 0)
         {
             Debug.LogWarning($"{carrierName} no tiene skills asignadas!");
             return;
         }
 
-        foreach (var skill in carrier.Skills)
+        foreach (var skill in carrier.Skill)
         {
             if (skill == null)
             {

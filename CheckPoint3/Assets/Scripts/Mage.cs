@@ -5,40 +5,40 @@ using UnityEngine;
 public class Mage : PlayableCarrier
 
 {
-    private Mana _mana;
-    private List<Skill> _skills;
-
-    public Mage(int minHealth, int maxHealth, int minMana, int maxMana)
-         : base(minHealth, maxHealth, maxMana, minMana)
+    protected override void Awake()
     {
-        _mana = new Mana(minMana, maxMana);
-        _skills = new List<Skill>(); // Inicializamos lista de habilidades
+        base.Awake();
+        // Comenzar con la vida máxima
+        Health.AffectValue(0);
     }
 
-    public new void AddSkill(Skill skill)
+    // Agregar habilidad usando la lista de PlayableCarrier
+    public void AddSkill(Skill skill)
     {
-        _skills.Add(skill);
+        if (skill != null)
+            Skill.Add(skill);
     }
 
-    public void UseSkill(int index)
+    // Lógica de uso de skills
+    public override void UseSkill(Skill.SkillType type)
     {
-        if (index < 0 || index >= _skills.Count)
+        // Busca la skill en la lista de la base
+        Skill skillToUse = Skill.Find(s => s != null && s.type == type);
+
+        if (skillToUse == null)
         {
-            Debug.Log("Index fuera de rango");
+            Debug.LogWarning($"{gameObject.name} no tiene la skill {type}");
             return;
         }
 
-        Skill skill = _skills[index];
+        // Verifica si puede usarla (cooldown y recursos)
+        if (!skillToUse.CanUse(this))
+        {
+            Debug.Log($"{gameObject.name} no puede usar {skillToUse.skillName}");
+            return;
+        }
 
-        // Verificamos si tiene suficiente mana
-        if (_mana.CurrentValue >= skill.manaCost)
-        {
-            _mana.AffectValue(-skill.manaCost); // restamos el mana
-            skill.Activate(this); // activamos la skill sobre el Mage
-        }
-        else
-        {
-            Debug.Log("No hay suficiente mana para usar la habilidad: " + skill.skillName);
-        }
+        // Aplica la skill, consumiendo mana y/o health según corresponda
+        skillToUse.UseSkill(this);
     }
 }

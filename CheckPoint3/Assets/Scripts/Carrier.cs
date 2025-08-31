@@ -4,9 +4,9 @@ public abstract class Carrier : MonoBehaviour
 {
     [Header("BASE")]
     [Header("Parameters")]
-    [SerializeField, Min(1)] private int maxHealth = 1;
+    [SerializeField, Min(1)] protected int maxHealth = 1;
 
-    private Health _health;
+    public Health _health;
 
     public Health Health => _health;
 

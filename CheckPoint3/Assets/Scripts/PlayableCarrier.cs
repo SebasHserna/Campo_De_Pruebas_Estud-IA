@@ -6,33 +6,28 @@ public abstract class PlayableCarrier : Carrier
     [Header("PLAYABLE")]
     [Header("Parameters")]
     [SerializeField, Min(1)] private int maxMana = 1;
-    [SerializeField] private FillType manaFillType;
+    
+    [SerializeField] private FillType manaFillType = FillType.Instant;
 
-    // Backing field (serializado para que aparezca en el Inspector)
-    [SerializeField] private List<Skill> Skill = new List<Skill>();
+    [Header("Skills")]
+    [SerializeField] public List<Skill> Skill = new List<Skill>();
 
-
-    protected Health health;
-    protected Mana mana;
-
-    public PlayableCarrier(int minHealth, int maxHealth, int minMana, int maxMana)
-        : base() // si Carrier tiene constructor vacío
-    {
-        health = new Health(minHealth, maxHealth);
-        mana = new Mana(minMana, maxMana);
-    }
-    // Propiedad pública de solo lectura para que otros scripts puedan consultarla
-    public IReadOnlyList<Skill> Skills => Skill;
-
+    public Health health => _health; // del Carrier
     private Mana _mana;
     public Mana Mana => _mana;
+
 
     protected override void Awake()
     {
         base.Awake();
+
+        // Health del Carrier base
+        _health = new Health(0, maxHealth);
+
+        // Mana propio de PlayableCarrier
         _mana = new Mana(0, maxMana, manaFillType, true);
 
-        // Resetear cooldowns runtime (si usas ScriptableObjects)
+        // Resetear cooldowns de skills
         if (Skill != null)
         {
             foreach (var s in Skill)
@@ -42,16 +37,15 @@ public abstract class PlayableCarrier : Carrier
         }
     }
 
+    // Propiedad pública de solo lectura para que otros scripts puedan consultarla
+
+
+
+    
+
     private void Start()
     {
-        Debug.Log($"{gameObject.name} tiene {Skill.Count} skills asignadas.");
-        foreach (var s in Skill)
-        {
-            if (s == null)
-                Debug.LogWarning($"{gameObject.name} tiene un slot de skill vacío.");
-            else
-                Debug.Log($"{gameObject.name} skill: {s.skillName}, cooldown {s.cooldown}s, mana cost {s.manaCost}");
-        }
+       
     }
 
     // Lógica de uso de skill por tipo
@@ -63,45 +57,21 @@ public abstract class PlayableCarrier : Carrier
             return;
         }
 
-        // Busca la skill que coincida con el tipo solicitado
-        Skill skill = Skill.Find(x => x != null && x.type == type);
-
-        if (skill == null)
+        Skill skillToUse = Skill.Find(s => s != null && s.type == type);
+        if (skillToUse == null)
         {
-            Debug.LogWarning($"{gameObject.name} no tiene la skill de tipo {type}.");
+            Debug.LogWarning($"{gameObject.name} no tiene la skill {type}");
             return;
         }
 
-        // Verifica cooldown (usa IsReady() si la tienes)
-        if (!skill.IsReady())
+        if (!skillToUse.CanUse(this))
         {
-            Debug.Log($"{skill.skillName} aún está en cooldown.");
+            Debug.Log($"{gameObject.name} no puede usar {skillToUse.skillName}");
             return;
         }
 
-        // convertir float -> int y comprobar mana
-        int cost = Mathf.CeilToInt(skill.manaCost);
-
-        if (_mana.CurrentValue < cost)
-        {
-            Debug.Log($"{gameObject.name} no tiene suficiente mana para usar {skill.skillName} (coste {cost}).");
-            return;
-        }
-
-        // aplicar consumo y activar la skill
-        _mana.AffectValue(-cost);
-        skill.UseSkill(); // o skill.Activate(this) según tu implementación de Skill
-        Debug.Log($"{gameObject.name} usó la skill {skill.skillName}. Mana restante: {_mana.CurrentValue}");
-    }
-
-    // Helpers públicos para modificar la lista en runtime si lo necesitas
-    public void AddSkill(Skill s)
-    {
-        if (s != null) Skill.Add(s);
-    }
-
-    public void RemoveSkill(Skill s)
-    {
-        if (s != null) Skill.Remove(s);
+        skillToUse.UseSkill(this); // Consume Mana/Health según corresponda
     }
 }
+
+
