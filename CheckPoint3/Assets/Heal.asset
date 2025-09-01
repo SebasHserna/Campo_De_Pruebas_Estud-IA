@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: 
   skillName: Heal
-  type: 0
+  type: 2
   icon: {fileID: 0}
   healthCost: 0
   requiresHealth: 0
-  manaCost: 1
+  manaCost: 50
   requiresMana: 1
   cooldown: 2
   damage: -20

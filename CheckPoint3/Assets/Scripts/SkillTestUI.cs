@@ -35,7 +35,7 @@ public class SkillTestUI : MonoBehaviour
 
         // Teclas para Berserk
         if (Input.GetKeyDown(KeyCode.Q)) UseSkill(berserk, Skill.SkillType.Rage);
-        if (Input.GetKeyDown(KeyCode.W)) UseSkill(berserk, Skill.SkillType.BasicAttack);
+        if (Input.GetKeyDown(KeyCode.R)) UseSkill(berserk, Skill.SkillType.BasicAttack);
 
         // Actualiza sliders cada frame
         UpdateUI();
