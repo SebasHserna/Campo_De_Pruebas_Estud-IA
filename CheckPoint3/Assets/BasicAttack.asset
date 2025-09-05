@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   healthCost: 20
-  requiresHealth: 1
+  requiresHealth: 0
   manaCost: 20
   requiresMana: 1
   cooldown: 5

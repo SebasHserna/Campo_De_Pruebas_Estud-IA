@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4ef181d4b0c2a41bd696f4e9bcb938, type: 3}
+  m_Name: FireBall
+  m_EditorClassIdentifier: 
+  SkillName: fireBall
+  target: Enemy
+  effects: []
+  projectile: {fileID: 1954512771206776410, guid: 035ce8c9cfc34104991ce416daf8aebe, type: 3}
+  speed: 500

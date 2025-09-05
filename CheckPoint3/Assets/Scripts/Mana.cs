@@ -23,7 +23,8 @@ public class Mana : Stat
                 base.AffectValue(value);
                 break;
             case FillType.ByTime:
-                //By time logic here
+                
+
                 break;
         }
     }
