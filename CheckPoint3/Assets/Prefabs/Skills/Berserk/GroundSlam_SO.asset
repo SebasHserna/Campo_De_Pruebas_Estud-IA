@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78cfe8c192961864bb5c335076756b14, type: 3}
+  m_Name: GroundSlam_SO
+  m_EditorClassIdentifier: 
+  skillName: Ground Slam
+  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  healthCost: 15
+  requiresHealth: 1
+  manaCost: 0
+  requiresMana: 0
+  cooldown: 5
+  damage: 30
+  slamPrefab: {fileID: 6526302276393259002, guid: f9d9793366789ae48a7e1b0692763acc, type: 3}
+  radius: 4
+  duration: 2

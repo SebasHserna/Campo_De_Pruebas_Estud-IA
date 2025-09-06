@@ -20,14 +20,14 @@ public class Mage : PlayableCarrier
     }
 
     // Lógica de uso de skills
-    public override void UseSkill(Skill.SkillType type)
+    public override void UseSkill()
     {
         // Busca la skill en la lista de la base
-        Skill skillToUse = Skill.Find(s => s != null && s.type == type);
+        Skill skillToUse = Skill.Find(s => s != null);
 
         if (skillToUse == null)
         {
-            Debug.LogWarning($"{gameObject.name} no tiene la skill {type}");
+            Debug.LogWarning($"{gameObject.name} no tiene la skill ");
             return;
         }
 

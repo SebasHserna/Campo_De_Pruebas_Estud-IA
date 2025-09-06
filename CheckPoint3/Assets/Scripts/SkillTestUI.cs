@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,19 +31,24 @@ public class SkillTestUI : MonoBehaviour
     void Update()
     {
         // Teclas para Mage
-        if (Input.GetKeyDown(KeyCode.Alpha1)) UseSkill(mage, Skill.SkillType.Fireball);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) UseSkill(mage, Skill.SkillType.Heal);
+        if (Input.GetKeyDown(KeyCode.Alpha1)) UseSkill();
+        if (Input.GetKeyDown(KeyCode.Alpha2)) UseSkill();
 
         // Teclas para Berserk
-        if (Input.GetKeyDown(KeyCode.Q)) UseSkill(berserk, Skill.SkillType.Rage);
-        if (Input.GetKeyDown(KeyCode.R)) UseSkill(berserk, Skill.SkillType.BasicAttack);
+        if (Input.GetKeyDown(KeyCode.Q)) UseSkill();
+        if (Input.GetKeyDown(KeyCode.R)) UseSkill();
 
         // Actualiza sliders cada frame
         UpdateUI();
     }
 
-    void UseSkill(PlayableCarrier player, Skill.SkillType type)
+    private void UseSkill()
     {
-        player.UseSkill(type);
+       
+    }
+
+    void UseSkill(PlayableCarrier player)
+    {
+        player.UseSkill();
     }
 }

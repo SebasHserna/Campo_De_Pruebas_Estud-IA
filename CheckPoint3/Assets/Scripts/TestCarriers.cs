@@ -37,13 +37,13 @@ public class TestCarriers : MonoBehaviour
         // Tecla 1: Mage usa Fireball
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            mage.UseSkill(Skill.SkillType.Fireball);
+            mage.UseSkill();
         }
 
         // Tecla 2: Berserk usa Rage
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            berserk.UseSkill(Skill.SkillType.Rage);
+            berserk.UseSkill();
         }
 
         // Mostrar estado en consola

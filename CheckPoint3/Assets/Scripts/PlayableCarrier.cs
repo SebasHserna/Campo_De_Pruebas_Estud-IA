@@ -49,7 +49,7 @@ public abstract class PlayableCarrier : Carrier
     }
 
     // Lógica de uso de skill por tipo
-    public virtual void UseSkill(Skill.SkillType type)
+    public virtual void UseSkill()
     {
         if (Skill == null || Skill.Count == 0)
         {
@@ -57,10 +57,10 @@ public abstract class PlayableCarrier : Carrier
             return;
         }
 
-        Skill skillToUse = Skill.Find(s => s != null && s.type == type);
+        Skill skillToUse = Skill.Find(s => s != null);
         if (skillToUse == null)
         {
-            Debug.LogWarning($"{gameObject.name} no tiene la skill {type}");
+            Debug.LogWarning($"{gameObject.name} no tiene la skill");
             return;
         }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 
-[CreateAssetMenu(menuName = "Skill/ProjectileSkill")]
+[CreateAssetMenu(fileName = "NewProjectileSkill", menuName = "Skills/Projectile")]
 
 public class ProjectileSkill : SkillV2
 {

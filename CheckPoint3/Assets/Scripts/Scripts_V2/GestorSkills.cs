@@ -5,6 +5,7 @@ public class GestorSkills : MonoBehaviour
     public SkillV2 fireBall;
     public SkillV2 rayo1;
     public SkillV2 AoE;
+  
 
     void Update()
     {
@@ -21,5 +22,6 @@ public class GestorSkills : MonoBehaviour
         {
             this.AoE.Fire(this.gameObject);
         }
+
     }
 }
