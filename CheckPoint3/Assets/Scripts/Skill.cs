@@ -61,5 +61,8 @@ public abstract class Skill : ScriptableObject
     }
 
     // Hook que define el comportamiento concreto de la skill
-    public abstract void Activate(PlayableCarrier user);
+    public virtual void Activate(PlayableCarrier user)
+    {
+        Debug.Log($"{user.name} activó la habilidad {skillName}");
+    }
 }

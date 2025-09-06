@@ -8,6 +8,6 @@ public class RayCastSkill : SkillV2
 
     public override void Fire(GameObject emiter)
     {
-        emiter.GetComponent<ActionEmiter>().Cast(new Ray(), this.range);
+     //    emiter.GetComponent<ActionEmiter>().Cast(new Ray(), this.range);
     }
 }

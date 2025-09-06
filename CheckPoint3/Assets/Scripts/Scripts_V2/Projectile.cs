@@ -1,9 +1,10 @@
 using UnityEngine;
 
+
+
 public class Projectile : MonoBehaviour
 {
-  
-    public ProjectileSkill projectileSkill;
+    public ProjectileSkill_M projectileSkill;
     public GameObject fireExplosion;
 
     private void Start()
@@ -14,25 +15,25 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        // Solo reaccionar si el objeto golpeado tiene el tag "Enemy"
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log($"Hit enemy! Speed: {this.projectileSkill.speed}");
-        }
-        else
-        {
-            Debug.Log($"Collided with {collision.gameObject.name}");
+            NonPlayableCarrier npc = collision.gameObject.GetComponent<NonPlayableCarrier>();
+            if (npc != null)
+            {
+                npc.TakeDamage(Mathf.RoundToInt(projectileSkill.damage));
+                Debug.Log($"Hit {collision.gameObject.name}, daño aplicado: {projectileSkill.damage}");
+            }
         }
 
-        // Instanciar explosión
+        // Instanciar partículas de explosión
         if (fireExplosion != null)
         {
             GameObject explosion = Instantiate(fireExplosion, transform.position, transform.rotation);
             Destroy(explosion, 0.5f);
         }
 
-        // Destruir proyectil SIEMPRE al chocar
+        // Destruir proyectil siempre al impactar
         Destroy(gameObject);
     }
-
 }

@@ -19690,7 +19690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff202e430e65b324ba2cd6a27d410033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSkill: {fileID: 11400000, guid: d0238baf01df8214ca606593274d4331, type: 2}
+  projectileSkill: {fileID: 11400000, guid: 5d85962ff66372d4db875a810397b5b1, type: 2}
   fireExplosion: {fileID: 4994997792314849709, guid: 3dd50886582244645be87adb42aa8528, type: 3}
 --- !u!1 &8759792057648169449
 GameObject:

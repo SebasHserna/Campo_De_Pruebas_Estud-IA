@@ -13,6 +13,6 @@ public class ProjectileSkill : SkillV2
 
     public override void Fire(GameObject emiter)
     {
-        emiter.GetComponent<ActionEmiter>().Launch(this.projectile, this.speed);
+      //  emiter.GetComponent<ActionEmiter>().Launch(this.projectile, this.speed);
     }
 }
