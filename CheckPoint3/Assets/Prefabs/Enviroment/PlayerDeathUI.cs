@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,8 +9,7 @@ public class PlayerDeathUI : MonoBehaviour
     [SerializeField] private GameObject explosionPrefab;
 
     private bool isDead = false;
-    private float deathTimer = 0f;
-    private float delayBeforeReturn = 4f; // segundos antes de volver al menu
+ 
 
     private void Start()
     {
@@ -19,23 +19,10 @@ public class PlayerDeathUI : MonoBehaviour
         if (player == null)
             Debug.LogError("No se asignó el Player en PlayerDeathUI.");
 
-        ResetState();
+       
     }
 
-    private void OnEnable()
-    {
-        ResetState();
-    }
-
-    private void ResetState()
-    {
-        isDead = false;
-        deathTimer = 0f;
-        if (deathScreen != null)
-            deathScreen.SetActive(false);
-        if (player != null)
-            player.gameObject.SetActive(true);
-    }
+   
 
     private void Update()
     {
@@ -48,11 +35,9 @@ public class PlayerDeathUI : MonoBehaviour
 
         if (isDead)
         {
-            deathTimer += Time.deltaTime;
-            if (deathTimer >= delayBeforeReturn)
-            {
-                GoToCharacterSelection();
-            }
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
         }
     }
 
@@ -73,11 +58,5 @@ public class PlayerDeathUI : MonoBehaviour
         player.gameObject.SetActive(false);
     }
 
-    private void GoToCharacterSelection()
-    {
-     
-
-        // Cargar escena de selección
-        SceneManager.LoadScene("Scene_Selection");
-    }
+    
 }
