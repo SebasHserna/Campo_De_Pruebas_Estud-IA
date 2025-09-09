@@ -9,7 +9,7 @@ public class Mage : PlayableCarrier
     {
         base.Awake();
         // Comenzar con la vida máxima
-        Health.AffectValue(0);
+        health.AffectValue(0);
     }
 
     // Agregar habilidad usando la lista de PlayableCarrier

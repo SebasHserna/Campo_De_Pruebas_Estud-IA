@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd688eb4d9da0c849b69ec484ca33b1e, type: 3}
-  m_Name: ProjectileSkill_MAge
+  m_Script: {fileID: 11500000, guid: a83fb91b666014844aa91f93162c1eb2, type: 3}
+  m_Name: ManaBuffSkill_M
   m_EditorClassIdentifier: 
-  skillName: fireBall
+  skillName: wisdom
   icon: {fileID: 0}
   healthCost: 0
   requiresHealth: 0
-  manaCost: 10
-  requiresMana: 1
-  cooldown: 3
-  damage: 15
-  projectilePrefab: {fileID: 1954512771206776410, guid: 035ce8c9cfc34104991ce416daf8aebe, type: 3}
-  speed: 10
-  fireExplosion: {fileID: 0}
+  manaCost: 0
+  requiresMana: 0
+  cooldown: 15
+  damage: 0
+  boostedRegenRate: 5
+  boostedInterval: 0.5
+  buffDuration: 5

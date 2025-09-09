@@ -6,6 +6,7 @@ public abstract class PlayableCarrier : Carrier
     [Header("PLAYABLE")]
     [Header("Parameters")]
     [SerializeField, Min(1)] private int maxMana = 1;
+
     
     [SerializeField] private FillType manaFillType = FillType.Instant;
 
@@ -36,17 +37,14 @@ public abstract class PlayableCarrier : Carrier
             }
         }
     }
-
-    // Propiedad pública de solo lectura para que otros scripts puedan consultarla
-
-
-
-    
-
-    private void Start()
+    //Llamamos Tick de Mana 
+    protected virtual void Update()
     {
-       
+        _mana.Tick(Time.deltaTime);
     }
+
+
+
 
     // Lógica de uso de skill por tipo
     public virtual void UseSkill()

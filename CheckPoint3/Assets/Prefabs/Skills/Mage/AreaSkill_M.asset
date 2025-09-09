@@ -9,17 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd688eb4d9da0c849b69ec484ca33b1e, type: 3}
-  m_Name: ProjectileSkill_MAge
+  m_Script: {fileID: 11500000, guid: 8fa301b093750d5418d3906f56fdb883, type: 3}
+  m_Name: AreaSkill_M
   m_EditorClassIdentifier: 
-  skillName: fireBall
+  skillName: spike cold
   icon: {fileID: 0}
   healthCost: 0
   requiresHealth: 0
-  manaCost: 10
+  manaCost: 20
   requiresMana: 1
-  cooldown: 3
-  damage: 15
-  projectilePrefab: {fileID: 1954512771206776410, guid: 035ce8c9cfc34104991ce416daf8aebe, type: 3}
-  speed: 10
-  fireExplosion: {fileID: 0}
+  cooldown: 5
+  damage: 25
+  areaPrefab: {fileID: 8188016234932992019, guid: 5deaa8f11638d2243ab934d4e8906217, type: 3}
+  range: 10
+  distance: 1.5
+  duration: 2
