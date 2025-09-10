@@ -127,9 +127,7 @@ MonoBehaviour:
   maxHealth: 200
   maxMana: 200
   manaFillType: 0
-  Skill:
-  - {fileID: 11400000, guid: 60d0f748869c9ac42a31ce00610ccae9, type: 2}
-  - {fileID: 11400000, guid: da814538f4429184690b0e37d55748a4, type: 2}
+  Skill: []
 --- !u!54 &8475543465902040015
 Rigidbody:
   m_ObjectHideFlags: 0

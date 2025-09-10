@@ -20,5 +20,8 @@ MonoBehaviour:
   requiresMana: 0
   cooldown: 3
   damage: 20
-  leapForce: 20
-  damageRadius: 5
+  leapForce: 10
+  upwardForce: 5
+  dashDuration: 2
+  leapEffectPrefab: {fileID: 3153472991145048103, guid: 3407e378c048bb5438424b28c7740b48, type: 3}
+  effectDuration: 2
