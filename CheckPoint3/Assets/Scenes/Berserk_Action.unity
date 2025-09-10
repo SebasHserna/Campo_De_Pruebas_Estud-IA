@@ -1082,6 +1082,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 835437765}
     m_Modifications:
+    - target: {fileID: 47703360108041880, guid: cb207657df6552542bd378c5bb9e50a8, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1687510267503267878, guid: cb207657df6552542bd378c5bb9e50a8, type: 3}
       propertyPath: m_Name
       value: PlayableCarrier_Berserk
@@ -1149,6 +1153,10 @@ PrefabInstance:
     - target: {fileID: 4936487823024194147, guid: cb207657df6552542bd378c5bb9e50a8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -374.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634661841465859137, guid: cb207657df6552542bd378c5bb9e50a8, type: 3}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6418692602241730321, guid: cb207657df6552542bd378c5bb9e50a8, type: 3}
       propertyPath: manaFillType
@@ -1413,8 +1421,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 683013156}
+  - {fileID: 1474732993}
   - {fileID: 767373261}
   - {fileID: 586100294}
   - {fileID: 2157542198058197448}
-  - {fileID: 1474732993}
   - {fileID: 835437765}
